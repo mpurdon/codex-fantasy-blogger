@@ -13,6 +13,16 @@ The pipeline consists of four agents:
 
 Running the CLI outputs a Markdown post under `content/posts/` and keeps `content/index.html` in sync.
 
+## Spec-Driven Development Notes
+
+This project was 100% developed using spec-driven development through Kiro. The initial prompt was:
+
+> Create an AI agentic process to populate a blog that writes about fantasy football FAAB acquistions. One agent should should go out and grab a list of the most added players across fantasy football leagues and cull the list down to a top 10 list. Then, another agent should go out and retrieve news and data for each of the members of the top 10 list to determine why the player is on the most added list. Finally, a transactions expert agent should make the determination whether each player should be considered a buy or pass. All of this information should be put together into a blog post by a writer agent and published to a blog app.
+
+There were no steering or guidance documents provided and no MCP servers were enabled. All designs and tasks were approved without review and development was run in full yolo/unsafe mode lasting a total of 32 minutes to complete at a cost of about $0.89 USD.
+
+The price caclulation is based on a token usage of 222,552 input (regular) x $1.25/MM + 2,113,408 input (cached) x $0.125/MM + 34,455 ouput x $10/MM.
+
 ## Setup
 
 ```bash
