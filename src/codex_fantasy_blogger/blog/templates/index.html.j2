@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{ title }}</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem auto; max-width: 800px; }
+    h1 { text-align: center; }
+    .post-card { border-bottom: 1px solid #ddd; padding: 1rem 0; }
+    .post-card:last-child { border-bottom: none; }
+    a { color: #0a4; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <h1>{{ title }}</h1>
+  <section>
+    {% if posts %}
+      {% for post in posts %}
+      <article class="post-card">
+        <h2><a href="{{ post.path }}">{{ post.title }}</a></h2>
+        <p><strong>Published:</strong> {{ post.created_at }}</p>
+      </article>
+      {% endfor %}
+    {% else %}
+      <p>No posts yet. Run the FAAB blogger pipeline to publish your first post.</p>
+    {% endif %}
+  </section>
+</body>
+</html>

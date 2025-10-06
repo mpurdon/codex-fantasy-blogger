@@ -1,0 +1,25 @@
+---
+title: {{ post.title }}
+date: {{ post.created_at.isoformat() }}
+slug: {{ post.slug }}
+---
+
+{{ post.intro }}
+
+{% for evaluation in post.evaluations %}## {{ evaluation.decision.player.name }} — {{ evaluation.decision.player.position or 'N/A' }} {{ evaluation.decision.player.team or 'FA' }}
+**Recommendation:** {{ evaluation.decision.recommendation|upper }} (confidence {{ (evaluation.decision.confidence * 100)|round(0) }}%)
+
+{{ evaluation.research.summary }}
+
+**Key Context**
+{% for point in evaluation.research.context_points %}- {{ point }}
+{% endfor %}
+
+**Headlines**
+{% for headline in evaluation.research.headlines %}- [{{ headline.title }}]({{ headline.link }}){% if headline.source %} — {{ headline.source }}{% endif %}
+{% else %}- No major headlines at publication time.
+{% endfor %}
+
+**Transaction Take:** {{ evaluation.decision.rationale }}
+
+{% endfor %}{{ post.outro }}
